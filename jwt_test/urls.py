@@ -16,6 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from rest_framework_jwt.views import obtain_jwt_token
+from users import views
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login/', obtain_jwt_token),
+    path('books/', views.BookView.as_view()),
+
 ]
