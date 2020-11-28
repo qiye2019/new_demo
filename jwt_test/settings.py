@@ -127,11 +127,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # 继承AbstractUser表
 AUTH_USER_MODEL = 'users.user'
 
-# 全局启用jwt认证
-# REST_FRAMEWORK = {
-    # 认证模块
-    # 'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework_jwt.authentication.JSONWebTokenAuthentication']
-# }
+
+
 # DRF配置
 
 REST_FRAMEWORK = {
@@ -142,10 +139,16 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS':'rest_framework.schemas.AutoSchema',
     # 认证
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        # 全局启用jwt认证
+        # 'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
     # 分页
     # 'DEFAULT_PAGINATION_CLASS': 'meiduo_mall.utils.pagination.StandardResultsSetPagination',
+}
+
+# JWT配置
+JWT_AUTH = {
+    'JWT_RESPONSE_PAYLOAD_HANDLER':'users.utils.my_jwt_response_payload_handler'
 }

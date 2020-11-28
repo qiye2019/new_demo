@@ -21,8 +21,8 @@ from rest_framework_jwt.views import obtain_jwt_token
 # 配置drf自动接口文档 pip install coreapi
 from rest_framework.documentation import include_docs_urls
 
-
 from users import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('docs/', include_docs_urls(title='站点页面标题')),
@@ -30,5 +30,8 @@ urlpatterns = [
     path('login/', obtain_jwt_token),
     path('books/', views.BookView.as_view()),
     path('userinfo/', views.UserInfoAPIView.as_view()),
+    path('goods/', views.GoodsInfoAPIView.as_view()),
+    path('login2/', views.Login2View.as_view({'post': 'login'})),
+    # path('login2/', views.Login2View.as_view()),
 
 ]
